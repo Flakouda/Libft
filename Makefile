@@ -3,139 +3,197 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: florientakoudad <florientakoudad@studen    +#+  +:+       +#+         #
+#    By: floakoud <floakoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/06 16:18:40 by florientako       #+#    #+#              #
-#    Updated: 2018/06/06 16:31:34 by florientako      ###   ########.fr        #
+#    Created: 20181106 18:18:31 by florientako       #+#    #+#              #
+#    Updated: 20181128 10:07:18 by floakoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: clean $(NAME) re fclean all
-.SILENT:
+NAME = libft.a
 
-Name = libft.a
+SRC =	ft_memset.c					\
+		ft_bzero.c					\
+		ft_memcpy.c					\
+		ft_memccpy.c				\
+		ft_memmove.c				\
+		ft_memchr.c					\
+		ft_memcmp.c					\
+		ft_memalloc.c				\
+		ft_memdel.c					\
+		ft_strlen.c					\
+		ft_strdup.c					\
+		ft_strcpy.c					\
+		ft_strncpy.c				\
+		ft_strcat.c					\
+		ft_strncat.c				\
+		ft_strlcat.c				\
+		ft_strchr.c					\
+		ft_strrchr.c				\
+		ft_strstr.c					\
+		ft_strnstr.c				\
+		ft_strcmp.c					\
+		ft_strncmp.c				\
+		ft_strnew.c					\
+		ft_strdel.c					\
+		ft_strclr.c					\
+		ft_striter.c				\
+		ft_striteri.c				\
+		ft_strmap.c					\
+		ft_strmapi.c				\
+		ft_strequ.c					\
+		ft_strnequ.c				\
+		ft_strsub.c					\
+		ft_strjoin.c				\
+		ft_strjoinfree.c			\
+		ft_strfind.c				\
+		ft_strtrim.c				\
+		ft_strsplit.c				\
+		ft_nbmot.c					\
+		ft_strclen.c				\
+		ft_itoa.c					\
+		ft_putstr.c					\
+		ft_putstr_fd.c				\
+		ft_putendl.c				\
+		ft_putendl_fd.c				\
+		ft_atoi.c					\
+		ft_atoi_base.c				\
+		ft_putnbr.c					\
+		ft_putnbr_fd.c				\
+		ft_putnbr_base.c			\
+		ft_is_negative.c			\
+		ft_swap.c					\
+		ft_isalpha.c				\
+		ft_isdigit.c				\
+		ft_isalnum.c				\
+		ft_isascii.c				\
+		ft_isprint.c				\
+		ft_isupper.c				\
+		ft_toupper.c				\
+		ft_islower.c				\
+		ft_tolower.c				\
+		ft_putchar.c				\
+		ft_putchar_fd.c				\
+		ft_lstnew.c					\
+		ft_lstdelone.c				\
+		ft_lstdel.c					\
+		ft_lstadd.c					\
+		ft_lstiter.c				\
+		ft_lstmap.c					\
+		ft_advanced_sort_wordtab.c	\
+		ft_sort_wordtab.c			\
+		ft_tablen.c					\
+		ft_sort_integer_table.c		\
+		ft_print_words_tables.c		\
 
-# Compilation
+OBJ =	ft_memset.o					\
+		ft_bzero.o					\
+		ft_memcpy.o					\
+		ft_memccpy.o				\
+		ft_memmove.o				\
+		ft_memchr.o					\
+		ft_memcmp.o					\
+		ft_memalloc.o				\
+		ft_memdel.o					\
+		ft_strlen.o					\
+		ft_strdup.o					\
+		ft_strcpy.o					\
+		ft_strncpy.o				\
+		ft_strcat.o					\
+		ft_strncat.o				\
+		ft_strlcat.o				\
+		ft_strchr.o					\
+		ft_strrchr.o				\
+		ft_strstr.o					\
+		ft_strnstr.o				\
+		ft_strcmp.o					\
+		ft_strncmp.o				\
+		ft_strnew.o					\
+		ft_strdel.o					\
+		ft_strclr.o					\
+		ft_striter.o				\
+		ft_striteri.o				\
+		ft_strmap.o					\
+		ft_strmapi.o				\
+		ft_strequ.o					\
+		ft_strnequ.o				\
+		ft_strsub.o					\
+		ft_strjoin.o				\
+		ft_strjoinfree.o			\
+		ft_strfind.o				\
+		ft_strtrim.o				\
+		ft_strsplit.o				\
+		ft_nbmot.o					\
+		ft_strclen.o				\
+		ft_itoa.o					\
+		ft_putstr.o					\
+		ft_putstr_fd.o				\
+		ft_putendl.o				\
+		ft_putendl_fd.o				\
+		ft_atoi.o					\
+		ft_atoi_base.o				\
+		ft_putnbr.o					\
+		ft_putnbr_fd.o				\
+		ft_putnbr_base.o			\
+		ft_is_negative.o			\
+		ft_swap.o					\
+		ft_isalpha.o				\
+		ft_isdigit.o				\
+		ft_isalnum.o				\
+		ft_isascii.o				\
+		ft_isprint.o				\
+		ft_isupper.o				\
+		ft_toupper.o				\
+		ft_islower.o				\
+		ft_tolower.o				\
+		ft_putchar.o				\
+		ft_putchar_fd.o				\
+		ft_lstnew.o					\
+		ft_lstdelone.o				\
+		ft_lstdel.o					\
+		ft_lstadd.o					\
+		ft_lstiter.o				\
+		ft_lstmap.o					\
+		ft_advanced_sort_wordtab.o	\
+		ft_sort_wordtab.o			\
+		ft_tablen.o					\
+		ft_sort_integer_table.o		\
+		ft_print_words_tables.o		\
 
-CC = gcc
-Flags = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -c
 
-# Dossiers
+#**************************************************#
 
-SRCDIR = src
-INCDIR = includes
-OBJDIR = obj
+# Couleur !
 
-# Sources
+CLEAR		= \033[2K
+UP 			= \033[A
+END			= \033[0m
 
-SRC =\
-		Chars/ft_isalnum.c \
-		Chars/ft_isalpha.c \
-		Chars/ft_isascii.c \
-		Chars/ft_isprint.c \
-		Chars/ft_putchar.c \
-		Chars/ft_tolower.c \
-		Chars/ft_toupper.c \
-		Chars/ft_putchar_fd.c \
-		Lists/ft_lstadd.c \
-		Lists/ft_lstdel.c \
-		Lists/ft_lstdelone.c \
-		Lists/ft_lstiter.c \
-		Lists/ft_lstmap.c \
-		Lists/ft_lstnew.c \
-		Memory/ft_bzero.c \
-		Memory/ft_memalloc.c \
-		Memory/ft_memccpy.c \
-		Memory/ft_memchr.c \
-		Memory/ft_memcmp.c \
-		Memory/ft_memcpy.c \
-		Memory/ft_memdel.c \
-		Memory/ft_memmove.c \
-		Memory/ft_memset.c \
-		Numbers/ft_atoi_base.c \
-		Numbers/ft_atoi.c \
-		Numbers/ft_itoa.c \
-		Numbers/ft_putnbr_base.c \
-		Numbers/ft_putnbr.c \
-		Numbers/ft_putnbr_fd.c \
-		Strings/ft_putendl_fd.c \
-		Strings/ft_putendl.c \
-		Strings/ft_putstr.c \
-		Strings/ft_putstr_fd.c \
-		Strings/ft_strcat.c \
-		Strings/ft_strchr.c \
-		Strings/ft_strclr.c \
-		Strings/ft_strcmp.c \
-		Strings/ft_strcpy.c \
-		Strings/ft_strdel.c \
-		Strings/ft_strdup.c \
-		Strings/ft_strequ.c \
-		Strings/ft_striter.c \
-		Strings/ft_striteri.c \
-		Strings/ft_strjoin.c \
-		Strings/ft_strlcat.c \
-		Strings/ft_strlen.c \
-		Strings/ft_strmap.c \
-		Strings/ft_strmapi.c \
-		Strings/ft_strncat.c \
-		Strings/ft_strncmp.c \
-		Strings/ft_strncpy.c \
-		Strings/ft_strndup.c \
-		Strings/ft_strnequ.c \
-		Strings/ft_strnew.c \
-		Strings/ft_strnstr.c \
-		Strings/ft_strrchr.c \
-		Strings/ft_strsplit.c \
-		Strings/ft_strstr.c \
-		Strings/ft_strsub.c \
-		Stringstrings/ft_strtrim.c \
-		Tabs/ft_advanced_sort_wordtab.c \
-		Tabs/ft_sort_wordtab.c \
-		Tabs/ft_tablen.c
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+VIOLET		= \033[0;35m
+CYAN		= \033[0;36m
+WHITE		= \033[0;37m
 
-# **************************************************************************** #
+#**************************************************#
 
-# SPECIAL CHARS
+all : $(NAME)
 
-LOG_CLEAR		= \033[2K
-LOG_UP 			= \033[A
-LOG_NOCOLOR		= \033[0m
-LOG_BLACK		= \033[1;30m
-LOG_RED			= \033[1;31m
-LOG_GREEN		= \033[1;32m
-LOG_YELLOW		= \033[1;33m
-LOG_BLUE		= \033[1;34m
-LOG_VIOLET		= \033[1;35m
-LOG_CYAN		= \033[1;36m
-LOG_WHITE		= \033[1;37m
+$(NAME) :
+	@gcc $(FLAGS) $(SRC)
+	@echo "$(CYAN)creation .o$(END) $(GREEN)[OK]$(END)"
+	@ar rc $(NAME) $(OBJ)
+	@echo "$(CYAN)creation librairie$(END) $(GREEN)[OK]$(END)"
 
-# **************************************************************************** #
+clean :
+	@rm -f $(OBJ)
+	@echo "$(RED)suppression .o$(END) $(GREEN)[OK]$(END)"
 
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-OBJS = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(basename $(SRC))))
-OBJS_DIRS = $(sort $(dir $(OBJS)))
+fclean : clean
+	@rm -f $(NAME)
+	@echo "$(RED)suppression executable$(END) $(GREEN)[OK]$(END)"
 
-INCS_DIRS = $(addsuffix /, $(INCDIR))
-INCS = $(addprefix -I , $(INCS_DIRS))
-
-all: $(NAME)
-
-$(NAME): build $(LIBS) $(OBJS)
-	echo "$(LOG_CLEAR)$(NAME)... $(LOG_CYAN)assembling...$(LOG_NOCOLOR)$(LOG_UP)"
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-	echo "$(LOG_CLEAR)$(NAME)... $(LOG_GREEN)compiled $(LOG_GREEN)✓$(LOG_NOCOLOR)"
-build:
-	mkdir -p $(OBJDIR)
-	mkdir -p $(OBJS_DIRS)
-clean:
-	rm -f $(LIBS)
-	rm -Rf $(OBJS_DIRS)
-	rm -Rf $(OBJDIR)
-fclean: clean
-	rm -f $(NAME)
-re: fclean all
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	echo "$(LOG_CLEAR)$(NAME)... $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	$(CC) -c -o $@ $< $(INCS) $(FLAGS)
+re : fclean all
