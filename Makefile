@@ -104,6 +104,7 @@ SRC =	ft_memset.c					\
 		ft_sort_integer_table.c		\
 		ft_print_words_tables.c		\
 		ft_strndup.c				\
+		get_next_line.c				\
 
 OBJ = $(SRC:.c=.o)
 
