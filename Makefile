@@ -10,6 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
+#**************************************************#
+
+# Couleur !
+
+CLEAR		= \033[2K
+UP 			= \033[A
+END			= \033[0m
+
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+VIOLET		= \033[0;35m
+CYAN		= \033[0;36m
+WHITE		= \033[0;37m
+
+#**************************************************#
+
 NAME = libft.a
 
 SRC =	ft_memset.c					\
@@ -85,115 +103,26 @@ SRC =	ft_memset.c					\
 		ft_tablen.c					\
 		ft_sort_integer_table.c		\
 		ft_print_words_tables.c		\
+		ft_strndup.c				\
 
-OBJ =	ft_memset.o					\
-		ft_bzero.o					\
-		ft_memcpy.o					\
-		ft_memccpy.o				\
-		ft_memmove.o				\
-		ft_memchr.o					\
-		ft_memcmp.o					\
-		ft_memalloc.o				\
-		ft_memdel.o					\
-		ft_strlen.o					\
-		ft_strdup.o					\
-		ft_strcpy.o					\
-		ft_strncpy.o				\
-		ft_strcat.o					\
-		ft_strncat.o				\
-		ft_strlcat.o				\
-		ft_strchr.o					\
-		ft_strrchr.o				\
-		ft_strstr.o					\
-		ft_strnstr.o				\
-		ft_strcmp.o					\
-		ft_strncmp.o				\
-		ft_strnew.o					\
-		ft_strdel.o					\
-		ft_strclr.o					\
-		ft_striter.o				\
-		ft_striteri.o				\
-		ft_strmap.o					\
-		ft_strmapi.o				\
-		ft_strequ.o					\
-		ft_strnequ.o				\
-		ft_strsub.o					\
-		ft_strjoin.o				\
-		ft_strjoinfree.o			\
-		ft_strfind.o				\
-		ft_strtrim.o				\
-		ft_strsplit.o				\
-		ft_nbmot.o					\
-		ft_strclen.o				\
-		ft_itoa.o					\
-		ft_putstr.o					\
-		ft_putstr_fd.o				\
-		ft_putendl.o				\
-		ft_putendl_fd.o				\
-		ft_atoi.o					\
-		ft_atoi_base.o				\
-		ft_putnbr.o					\
-		ft_putnbr_fd.o				\
-		ft_putnbr_base.o			\
-		ft_is_negative.o			\
-		ft_swap.o					\
-		ft_isalpha.o				\
-		ft_isdigit.o				\
-		ft_isalnum.o				\
-		ft_isascii.o				\
-		ft_isprint.o				\
-		ft_isupper.o				\
-		ft_toupper.o				\
-		ft_islower.o				\
-		ft_tolower.o				\
-		ft_putchar.o				\
-		ft_putchar_fd.o				\
-		ft_lstnew.o					\
-		ft_lstdelone.o				\
-		ft_lstdel.o					\
-		ft_lstadd.o					\
-		ft_lstiter.o				\
-		ft_lstmap.o					\
-		ft_advanced_sort_wordtab.o	\
-		ft_sort_wordtab.o			\
-		ft_tablen.o					\
-		ft_sort_integer_table.o		\
-		ft_print_words_tables.o		\
+OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Werror -Wextra -c
-
-#**************************************************#
-
-# Couleur !
-
-CLEAR		= \033[2K
-UP 			= \033[A
-END			= \033[0m
-
-RED			= \033[0;31m
-GREEN		= \033[0;32m
-YELLOW		= \033[0;33m
-BLUE		= \033[0;34m
-VIOLET		= \033[0;35m
-CYAN		= \033[0;36m
-WHITE		= \033[0;37m
-
-#**************************************************#
 
 all : $(NAME)
 
 $(NAME) :
 	@gcc $(FLAGS) $(SRC)
-	@echo "$(CYAN)creation .o$(END) $(GREEN)[OK]$(END)"
+	@echo "objects of library created [$(GREEN)OK$(END)]"
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(CYAN)creation librairie$(END) $(GREEN)[OK]$(END)"
+	@echo "library created [$(GREEN)OK$(END)]"
 
 clean :
 	@rm -f $(OBJ)
-	@echo "$(RED)suppression .o$(END) $(GREEN)[OK]$(END)"
+	@echo "objects of librabry deleted [$(RED)CLEAR$(END)]"
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "$(RED)suppression executable$(END) $(GREEN)[OK]$(END)"
+	@echo "library deleted [$(RED)CLEAR$(END)]"
 
 re : fclean all
